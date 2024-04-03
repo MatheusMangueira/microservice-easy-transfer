@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-
   @Autowired
   private UserRepository userRepository;
 
@@ -26,7 +25,6 @@ public class UserService {
     User newUser = new User(user);
     return userRepository.save(newUser);
   }
-
 
   private void updateUserFields(User userToUpdate, UserDTO userDTO) {
     if (userDTO.name() != null) {
@@ -45,6 +43,7 @@ public class UserService {
       userToUpdate.setBalance(userDTO.balance());
     }
   }
+
   public User updateUser(UserDTO user, String id){
 
     User userToUpdate = userRepository.findById(id).orElse(null);
@@ -56,6 +55,10 @@ public class UserService {
     updateUserFields(userToUpdate, user);
 
     return userRepository.save(userToUpdate);
+  }
+
+  public void deleteUser(String id){
+    userRepository.deleteById(id);
   }
 
 }
