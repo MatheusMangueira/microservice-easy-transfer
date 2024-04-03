@@ -2,6 +2,7 @@ package com.matheusmangueira.microserviceusers.controllers;
 
 import com.matheusmangueira.microserviceusers.domain.User;
 import com.matheusmangueira.microserviceusers.dtos.UserDTO;
+import com.matheusmangueira.microserviceusers.exceptions.UserAlreadyExistsException;
 import com.matheusmangueira.microserviceusers.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,7 +23,7 @@ public class UserController {
 
   @GetMapping("/all")
   public ResponseEntity<List<User>> getAllUsers(@RequestParam(defaultValue = "1")
-  Integer page, @RequestParam(defaultValue = "10") Integer limit){
+                                                Integer page, @RequestParam(defaultValue = "10") Integer limit) {
 
     Pageable pageable = PageRequest.of(page - 1, limit);
     Page<User> usersPage = userService.getAllUsers(pageable);
@@ -32,7 +33,7 @@ public class UserController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<User> getUserById(@PathVariable String id){
+  public ResponseEntity<User> getUserById(@PathVariable String id) {
 
     User user = userService.getUserById(id);
 
@@ -40,15 +41,13 @@ public class UserController {
   }
 
   @PostMapping
-  public ResponseEntity<User> createUser(@RequestBody UserDTO user){
-
-    User newUser = userService.createUser(user);
-
-    return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
+  public ResponseEntity<User> createUser(@RequestBody UserDTO user) {
+      User newUser = userService.createUser(user);
+      return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<User> updateUser(@RequestBody UserDTO user, @PathVariable String id){
+  public ResponseEntity<User> updateUser(@RequestBody UserDTO user, @PathVariable String id) {
 
     User updatedUser = userService.updateUser(user, id);
 
@@ -56,7 +55,7 @@ public class UserController {
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<Void> deleteUser(@PathVariable String id){
+  public ResponseEntity<Void> deleteUser(@PathVariable String id) {
     userService.deleteUser(id);
     return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
   }
