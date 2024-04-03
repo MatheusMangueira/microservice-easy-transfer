@@ -31,8 +31,8 @@ public class UserController {
     return ResponseEntity.status(HttpStatus.OK).body(users);
   }
 
-  @GetMapping("/id")
-  public ResponseEntity<User> getUserById(@RequestParam String id){
+  @GetMapping("/{id}")
+  public ResponseEntity<User> getUserById(@PathVariable String id){
 
     User user = userService.getUserById(id);
 
