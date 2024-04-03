@@ -28,4 +28,34 @@ public class UserService {
   }
 
 
+  private void updateUserFields(User userToUpdate, UserDTO userDTO) {
+    if (userDTO.name() != null) {
+      userToUpdate.setName(userDTO.name());
+    }
+
+    if (userDTO.email() != null) {
+      userToUpdate.setEmail(userDTO.email());
+    }
+
+    if (userDTO.password() != null) {
+      userToUpdate.setPassword(userDTO.password());
+    }
+
+    if (userDTO.balance() != null) {
+      userToUpdate.setBalance(userDTO.balance());
+    }
+  }
+  public User updateUser(UserDTO user, String id){
+
+    User userToUpdate = userRepository.findById(id).orElse(null);
+
+    if(userToUpdate == null){
+      return null;
+    }
+
+    updateUserFields(userToUpdate, user);
+
+    return userRepository.save(userToUpdate);
+  }
+
 }
