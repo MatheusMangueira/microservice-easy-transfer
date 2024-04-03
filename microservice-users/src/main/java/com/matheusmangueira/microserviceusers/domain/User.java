@@ -2,7 +2,13 @@ package com.matheusmangueira.microserviceusers.domain;
 
 import com.matheusmangueira.microserviceusers.dtos.UserDTO;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
+
+import java.math.BigDecimal;
 
 @Entity(name = "user")
 @Table(name = "user_entity")
@@ -18,15 +24,22 @@ public class User {
     private String id;
 
     @Column(nullable = false)
+    @NotBlank
+    @Length(min = 3, max = 50)
     private String name;
 
     @Column(nullable = false)
+    @NotBlank
+    @Email
     private String email;
 
     @Column(nullable = false)
+    @NotBlank
+    @Length(min = 3, max = 50)
     private String password;
 
     @Column(nullable = false)
+    @NotNull
     private Double balance;
 
 
