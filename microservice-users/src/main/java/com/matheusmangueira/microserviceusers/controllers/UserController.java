@@ -1,8 +1,8 @@
 package com.matheusmangueira.microserviceusers.controllers;
 
 import com.matheusmangueira.microserviceusers.domain.User;
+import com.matheusmangueira.microserviceusers.dtos.TransferRequestDTO;
 import com.matheusmangueira.microserviceusers.dtos.UserDTO;
-import com.matheusmangueira.microserviceusers.exceptions.UserAlreadyExistsException;
 import com.matheusmangueira.microserviceusers.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -59,4 +59,13 @@ public class UserController {
     userService.deleteUser(id);
     return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
   }
+
+  @PutMapping("/transfer")
+  public ResponseEntity<Void> transfer(@RequestBody TransferRequestDTO transferRequestDTO) {
+
+    userService.transfer("transfer-row", transferRequestDTO);
+
+    return ResponseEntity.status(HttpStatus.OK).build();
+  }
+
 }
