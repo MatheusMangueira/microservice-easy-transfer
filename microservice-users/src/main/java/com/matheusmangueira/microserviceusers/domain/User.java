@@ -34,19 +34,13 @@ public class User {
     private String email;
 
     @Column(nullable = false)
-    @NotBlank
-    @Length(min = 3, max = 50)
-    private String password;
-
-    @Column(nullable = false)
     @NotNull
-    private Double balance;
+    private BigDecimal balance;
 
 
     public User(UserDTO userDTO) {
         this.name = userDTO.name();
         this.email = userDTO.email();
-        this.password = userDTO.password();
         this.balance = userDTO.balance();
 
     }

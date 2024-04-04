@@ -47,10 +47,6 @@ public class UserService {
       userToUpdate.setEmail(userDTO.email());
     }
 
-    if (userDTO.password() != null) {
-      userToUpdate.setPassword(userDTO.password());
-    }
-
     if (userDTO.balance() != null) {
       userToUpdate.setBalance(userDTO.balance());
     }
