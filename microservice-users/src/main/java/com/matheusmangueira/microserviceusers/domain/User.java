@@ -1,6 +1,6 @@
 package com.matheusmangueira.microserviceusers.domain;
 
-import com.matheusmangueira.microserviceusers.dtos.UserDTO;
+import dtos.UserDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

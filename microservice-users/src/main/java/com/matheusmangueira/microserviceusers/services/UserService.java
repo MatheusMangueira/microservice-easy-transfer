@@ -2,17 +2,18 @@ package com.matheusmangueira.microserviceusers.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.matheusmangueira.microserviceusers.domain.User;
-import com.matheusmangueira.microserviceusers.dtos.TransferRequestDTO;
-import com.matheusmangueira.microserviceusers.dtos.UserDTO;
 import com.matheusmangueira.microserviceusers.exceptions.UserAlreadyExistsException;
 import com.matheusmangueira.microserviceusers.exceptions.UserNotFoundException;
 import com.matheusmangueira.microserviceusers.repositories.UserRepository;
+import dtos.TransferRequestDTO;
+import dtos.UserDTO;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -83,10 +84,10 @@ public class UserService {
     userRepository.deleteById(id);
   }
 
-  public void transfer(String nameRow, TransferRequestDTO transferRequest) {
+  public void transfer(String nameRow, Object message) {
     try {
-      String message = objectMapper.writeValueAsString(transferRequest);
-      this.rabbitTemplate.convertAndSend(nameRow, message);
+      String messageJson = this.objectMapper.writeValueAsString(message);
+      this.rabbitTemplate.convertAndSend(nameRow, messageJson);
 
     } catch (Exception e) {
       throw new RuntimeException("Error to send message to queue");
