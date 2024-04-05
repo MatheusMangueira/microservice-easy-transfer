@@ -64,7 +64,6 @@ public class UserController {
 
     @PutMapping("/transfer")
     public ResponseEntity<Void> transfer(@RequestBody TransferRequestDTO transferRequestDTO) {
-
       this.userService.transfer("transfer-row", transferRequestDTO);
 
       return ResponseEntity.status(HttpStatus.OK).build();

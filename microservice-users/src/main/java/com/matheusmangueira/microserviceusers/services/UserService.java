@@ -13,7 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Objects;
+import java.math.BigDecimal;
 import java.util.Optional;
 
 @Service
@@ -84,15 +84,31 @@ public class UserService {
     userRepository.deleteById(id);
   }
 
-  public void transfer(String nameRow, Object message) {
+  public void transfer(String nameRow, TransferRequestDTO transferRequestDTO) {
+    validateTransferRequest(transferRequestDTO);
+
     try {
-      String messageJson = this.objectMapper.writeValueAsString(message);
-      this.rabbitTemplate.convertAndSend(nameRow, messageJson);
+      String messageJson = objectMapper.writeValueAsString(transferRequestDTO);
+      rabbitTemplate.convertAndSend(nameRow, messageJson);
 
     } catch (Exception e) {
       throw new RuntimeException("Error to send message to queue");
     }
 
+  }
+
+  private void validateTransferRequest(TransferRequestDTO transferRequestDTO) {
+    User recipient = userRepository.findById(transferRequestDTO.recipientID)
+        .orElseThrow(() -> new UserNotFoundException("Recipient not found"));
+
+    User sender = userRepository.findById(transferRequestDTO.senderID)
+        .orElseThrow(() -> new UserNotFoundException("Sender not found"));
+
+    BigDecimal value = transferRequestDTO.value;
+
+    if (recipient == null || sender == null || value == null) {
+      throw new IllegalArgumentException("Invalid transfer request");
+    }
   }
 
 
