@@ -1,4 +1,4 @@
-package com.matheusmangueira.microserviceusers.dtos;
+package dtos;
 
 import java.math.BigDecimal;
 
