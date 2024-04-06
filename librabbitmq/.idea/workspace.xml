@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6f603bfd-a2b8-4007-b5f8-9deea20d8be6" name="Changes" comment="feat: using lib DTOs" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2efJcCyTUvzCFFG7PWfKRhDihQk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.librabbitmq [install].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/Estudos/MicroBank/librabbitmq/src/main/java"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Estudos\MicroBank\librabbitmq\src\main\java" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6f603bfd-a2b8-4007-b5f8-9deea20d8be6" name="Changes" comment="" />
+      <created>1712289777521</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1712289777521</updated>
+    </task>
+    <task id="LOCAL-00001" summary="feat: create lib for DTOs to share between services">
+      <option name="closed" value="true" />
+      <created>1712294963054</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712294963054</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: lib org.librabbitmq for DTOs">
+      <option name="closed" value="true" />
+      <created>1712295074742</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712295074742</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: environment variables for rabbitmq">
+      <option name="closed" value="true" />
+      <created>1712295086364</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712295086364</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: entity for transfer">
+      <option name="closed" value="true" />
+      <created>1712295118684</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712295118684</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: create repository for transfer">
+      <option name="closed" value="true" />
+      <created>1712295135675</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1712295135675</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: create service for transfer">
+      <option name="closed" value="true" />
+      <created>1712295148078</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712295148078</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat: rabbitmq transfer queue consumption">
+      <option name="closed" value="true" />
+      <created>1712295178427</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712295178427</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat: annotation for rabbitmq for transfer">
+      <option name="closed" value="true" />
+      <created>1712295218434</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1712295218434</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat: add lib for DTOs for service user">
+      <option name="closed" value="true" />
+      <created>1712295263055</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712295263055</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: using lib DTOs">
+      <option name="closed" value="true" />
+      <created>1712295337456</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1712295337456</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: create lib for DTOs to share between services" />
+    <MESSAGE value="feat: lib org.librabbitmq for DTOs" />
+    <MESSAGE value="feat: environment variables for rabbitmq" />
+    <MESSAGE value="feat: entity for transfer" />
+    <MESSAGE value="feat: create repository for transfer" />
+    <MESSAGE value="feat: create service for transfer" />
+    <MESSAGE value="feat: rabbitmq transfer queue consumption" />
+    <MESSAGE value="feat: annotation for rabbitmq for transfer" />
+    <MESSAGE value="feat: add lib for DTOs for service user" />
+    <MESSAGE value="feat: using lib DTOs" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: using lib DTOs" />
+  </component>
+</project>
