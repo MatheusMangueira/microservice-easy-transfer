@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 
 public class TransferRequestDTO implements Serializable {
-    public String senderID;
-    public String recipientID;
+    public UserDTO senderID;
+    public UserDTO recipientID;
     public BigDecimal value;
 }

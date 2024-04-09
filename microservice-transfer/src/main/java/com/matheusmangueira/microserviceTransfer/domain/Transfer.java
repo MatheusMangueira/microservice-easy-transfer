@@ -34,8 +34,8 @@ public class Transfer {
   private BigDecimal value;
 
   public Transfer(TransferRequestDTO TransferRequestDTO ) {
-    this.senderID = TransferRequestDTO.senderID;
-    this.receiverID = TransferRequestDTO.recipientID;
+    this.senderID = TransferRequestDTO.senderID.id();
+    this.receiverID =TransferRequestDTO.recipientID.id();
     this.value = TransferRequestDTO.value;
   }
 
