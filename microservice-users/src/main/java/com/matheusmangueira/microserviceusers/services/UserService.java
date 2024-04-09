@@ -1,6 +1,7 @@
 package com.matheusmangueira.microserviceusers.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.matheusmangueira.microserviceusers.constants.UserConstants;
 import com.matheusmangueira.microserviceusers.domain.User;
 import com.matheusmangueira.microserviceusers.exceptions.TransferFailedException;
 import com.matheusmangueira.microserviceusers.exceptions.UserAlreadyExistsException;
@@ -142,7 +143,10 @@ public class UserService {
       String senderID,
       String recipientID,
       BigDecimal balanceSender,
-      BigDecimal balanceRecipient
+      BigDecimal balanceRecipient,
+      String senderName,
+      String nameRecipient,
+      BigDecimal value
   ) {
 
     try {
@@ -160,10 +164,28 @@ public class UserService {
       userRepository.save(userSender);
       userRepository.save(userRecipient);
 
+      TransactionApproved(
+          UserConstants.USER_COMPLETED +
+              " de: " + senderName
+              + " para: " + nameRecipient
+              + " no valor de: " + value);
+
     } catch (Exception e) {
+      TransactionApproved(UserConstants.USER_CANCELED);
       throw new TransferFailedException("Error to update transfer");
     }
 
+  }
+
+  public void TransactionApproved(String message) {
+
+    try {
+      String messageJson = objectMapper.writeValueAsString(message);
+      rabbitTemplate.convertAndSend("notification-row", messageJson);
+
+    } catch (Exception e) {
+      throw new RuntimeException("Error to send message to queue");
+    }
   }
 
 

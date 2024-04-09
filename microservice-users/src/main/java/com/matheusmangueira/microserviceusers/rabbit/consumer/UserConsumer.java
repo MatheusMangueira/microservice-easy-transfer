@@ -23,14 +23,15 @@ public class UserConsumer {
         transferRequestDTO.senderID.id,
         transferRequestDTO.recipientID.id,
         transferRequestDTO.senderID.balance,
-        transferRequestDTO.recipientID.balance
+        transferRequestDTO.recipientID.balance,
+        transferRequestDTO.senderID.name,
+        transferRequestDTO.recipientID.name,
+        transferRequestDTO.value
     );
 
+
+
     System.out.println("Transfer: " + message);
-    System.out.println("Sender: " + transferRequestDTO.senderID.balance);
-    System.out.println("Recipient: " + transferRequestDTO.recipientID.balance);
-    System.out.println("Value: " + transferRequestDTO.senderID.name);
-    System.out.println("Value: " + transferRequestDTO.recipientID.name);
     System.out.println("-------------------------");
   }
 }

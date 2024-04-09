@@ -34,17 +34,21 @@ public class TransferRequestProducer {
   @PostConstruct
   public void send() {
     Queue row = row("transfer-row");
+    Queue rowNotification = row("notification-row");
 
     DirectExchange exchange = exchange();
 
     Binding relation = bind(row, exchange);
+    Binding relationNotification = bind(rowNotification, exchange);
 
     //criando fila no RabbitMQ
     this.amqpAdmin.declareQueue(row);
+    this.amqpAdmin.declareQueue(rowNotification);
     //criando exchange no RabbitMQ
     this.amqpAdmin.declareExchange(exchange);
     //criando relação fila-exchange no RabbitMQ
     this.amqpAdmin.declareBinding(relation);
+    this.amqpAdmin.declareBinding(relationNotification);
   }
 
 
