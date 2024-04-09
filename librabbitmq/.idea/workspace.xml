@@ -6,14 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6f603bfd-a2b8-4007-b5f8-9deea20d8be6" name="Changes" comment="feat: using lib DTOs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dtos/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dtos/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-transfer/src/main/java/com/matheusmangueira/microserviceTransfer/domain/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-transfer/src/main/java/com/matheusmangueira/microserviceTransfer/domain/Transfer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-transfer/src/main/java/com/matheusmangueira/microserviceTransfer/rabbit/comsumer/TansferConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-transfer/src/main/java/com/matheusmangueira/microserviceTransfer/rabbit/comsumer/TansferConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-transfer/src/main/java/com/matheusmangueira/microserviceTransfer/rabbit/producer/TransferProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-transfer/src/main/java/com/matheusmangueira/microserviceTransfer/rabbit/producer/TransferProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-transfer/src/main/java/com/matheusmangueira/microserviceTransfer/repositories/TransferRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-transfer/src/main/java/com/matheusmangueira/microserviceTransfer/repositories/TransferRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-transfer/src/main/java/com/matheusmangueira/microserviceTransfer/services/TransferService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-transfer/src/main/java/com/matheusmangueira/microserviceTransfer/services/TransferService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-users/src/main/java/com/matheusmangueira/microserviceusers/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-users/src/main/java/com/matheusmangueira/microserviceusers/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-users/src/main/java/com/matheusmangueira/microserviceusers/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-users/src/main/java/com/matheusmangueira/microserviceusers/services/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
