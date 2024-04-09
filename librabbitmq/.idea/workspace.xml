@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f603bfd-a2b8-4007-b5f8-9deea20d8be6" name="Changes" comment="feat: using lib DTOs" />
+    <list default="true" id="6f603bfd-a2b8-4007-b5f8-9deea20d8be6" name="Changes" comment="feat: using lib DTOs">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dtos/TransferRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dtos/TransferRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dtos/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dtos/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-transfer/src/main/java/com/matheusmangueira/microserviceTransfer/domain/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-transfer/src/main/java/com/matheusmangueira/microserviceTransfer/domain/Transfer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-transfer/src/main/java/com/matheusmangueira/microserviceTransfer/rabbit/comsumer/TansferConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-transfer/src/main/java/com/matheusmangueira/microserviceTransfer/rabbit/comsumer/TansferConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-transfer/src/main/java/com/matheusmangueira/microserviceTransfer/services/TransferService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-transfer/src/main/java/com/matheusmangueira/microserviceTransfer/services/TransferService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-users/src/main/java/com/matheusmangueira/microserviceusers/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-users/src/main/java/com/matheusmangueira/microserviceusers/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-users/src/main/java/com/matheusmangueira/microserviceusers/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-users/src/main/java/com/matheusmangueira/microserviceusers/services/UserService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +22,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2efJcCyTUvzCFFG7PWfKRhDihQk" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -28,7 +37,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/Estudos/MicroBank/librabbitmq/src/main/java"
+    "last_opened_file_path": "E:/Estudos/MicroBank/librabbitmq"
   }
 }]]></component>
   <component name="RecentsManager">

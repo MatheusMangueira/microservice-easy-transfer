@@ -15,8 +15,6 @@ public class  TransferService {
 
   public void transfer(BigDecimal value, UserDTO sender, UserDTO recipient) {
 
-
-
     BigDecimal subtract = sender.balance().subtract(value);
     BigDecimal add = recipient.balance().add(value);
   }
