@@ -39,9 +39,9 @@ public class User {
 
 
     public User(UserDTO userDTO) {
-        this.name = userDTO.name();
-        this.email = userDTO.email();
-        this.balance = userDTO.balance();
+        this.name = userDTO.name;
+        this.email = userDTO.email;
+        this.balance = userDTO.balance;
 
     }
 }

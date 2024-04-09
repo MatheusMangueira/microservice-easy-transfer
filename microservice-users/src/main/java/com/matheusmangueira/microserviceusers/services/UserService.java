@@ -40,7 +40,7 @@ public class UserService {
 
   public User createUser(UserDTO user) {
 
-    if (userRepository.existsByEmail(user.email())) {
+    if (userRepository.existsByEmail(user.email)) {
       throw new UserAlreadyExistsException("User exists");
     }
 
@@ -50,16 +50,16 @@ public class UserService {
   }
 
   private void updateUserFields(User userToUpdate, UserDTO userDTO) {
-    if (userDTO.name() != null) {
-      userToUpdate.setName(userDTO.name());
+    if (userDTO.name != null) {
+      userToUpdate.setName(userDTO.name);
     }
 
-    if (userDTO.email() != null) {
-      userToUpdate.setEmail(userDTO.email());
+    if (userDTO.email != null) {
+      userToUpdate.setEmail(userDTO.email);
     }
 
-    if (userDTO.balance() != null) {
-      userToUpdate.setBalance(userDTO.balance());
+    if (userDTO.balance != null) {
+      userToUpdate.setBalance(userDTO.balance);
     }
   }
 
@@ -99,11 +99,11 @@ public class UserService {
   }
 
   private void validateTransferRequest(TransferRequestDTO transferRequestDTO) {
-    User sender = userRepository.findById(transferRequestDTO.senderID.id())
+    User sender = userRepository.findById(transferRequestDTO.senderID.id)
         .filter(user ->
-            user.getEmail().equals(transferRequestDTO.senderID.email())
-                && user.getName().equals(transferRequestDTO.senderID.name())
-                && user.getBalance().equals(transferRequestDTO.senderID.balance()
+            user.getEmail().equals(transferRequestDTO.senderID.email
+            ) && user.getName().equals(transferRequestDTO.senderID.name
+            ) && user.getBalance().equals(transferRequestDTO.senderID.balance
             )
         )
         .orElseThrow(() -> new UserWrongInformationException("Invalid sender information. " +
@@ -114,11 +114,11 @@ public class UserService {
             "id: 1"));
 
 
-    User recipient = userRepository.findById(transferRequestDTO.recipientID.id())
+    User recipient = userRepository.findById(transferRequestDTO.recipientID.id)
         .filter(user ->
-            user.getEmail().equals(transferRequestDTO.recipientID.email())
-                && user.getName().equals(transferRequestDTO.recipientID.name())
-                && user.getBalance().equals(transferRequestDTO.recipientID.balance()
+            user.getEmail().equals(transferRequestDTO.recipientID.email)
+                && user.getName().equals(transferRequestDTO.recipientID.name)
+                && user.getBalance().equals(transferRequestDTO.recipientID.balance
             )
         )
         .orElseThrow(() -> new UserWrongInformationException("Invalid recipient information. " +
@@ -130,7 +130,7 @@ public class UserService {
 
     BigDecimal value = transferRequestDTO.value;
 
-    if (value == null) {
+    if (value != null && value.compareTo(sender.getBalance()) > 0) {
       throw new IllegalArgumentException("Invalid transfer request");
     }
   }
