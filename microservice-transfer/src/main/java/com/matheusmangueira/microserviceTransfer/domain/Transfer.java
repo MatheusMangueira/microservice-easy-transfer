@@ -1,6 +1,7 @@
 package com.matheusmangueira.microserviceTransfer.domain;
 
 import dtos.TransferRequestDTO;
+import dtos.UserDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -27,16 +28,16 @@ public class Transfer {
 
   @Column(nullable = false)
   @NotBlank
-  private String receiverID;
+  private String recipientID;
 
   @Column(nullable = false)
   @NotNull
   private BigDecimal value;
 
-  public Transfer(TransferRequestDTO TransferRequestDTO ) {
-    this.senderID = TransferRequestDTO.senderID.id();
-    this.receiverID =TransferRequestDTO.recipientID.id();
-    this.value = TransferRequestDTO.value;
+  public Transfer(UserDTO sender, UserDTO recipient, BigDecimal value) {
+    this.senderID = sender.id;
+    this.recipientID = recipient.id;
+    this.value = value;
   }
 
 }
