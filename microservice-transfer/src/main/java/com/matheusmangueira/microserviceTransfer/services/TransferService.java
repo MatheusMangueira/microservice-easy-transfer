@@ -3,7 +3,6 @@ package com.matheusmangueira.microserviceTransfer.services;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.matheusmangueira.microserviceTransfer.domain.Transfer;
-import com.matheusmangueira.microserviceTransfer.constants.StatusTransfer;
 import com.matheusmangueira.microserviceTransfer.exceptions.TransferFailedException;
 import com.matheusmangueira.microserviceTransfer.repositories.TransferRepository;
 import dtos.UserDTO;
@@ -15,6 +14,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class TransferService {
@@ -26,30 +27,32 @@ public class TransferService {
   @Autowired
   private RabbitTemplate rabbitTemplate;
 
-  public void transferAccount(BigDecimal value, UserDTO sender, UserDTO recipient) {
+  public void transferAccount(BigDecimal value, UserDTO senderID, UserDTO recipientID) {
 
     try {
-      sender.balance = sender.balance.subtract(value);
-      recipient.balance = recipient.balance.add(value);
+      senderID.balance = senderID.balance.subtract(value);
+      recipientID.balance = recipientID.balance.add(value);
 
-      sendMessage(StatusTransfer.COMPLETED, value, sender, recipient);
+      sendMessage(value, senderID, recipientID);
 
-      Transfer transfer = new Transfer(sender, recipient, value);
+      Transfer transfer = new Transfer(senderID, recipientID, value);
       transferRepository.save(transfer);
 
     } catch (Exception e) {
-      sendMessage(StatusTransfer.CANCELED, value, sender, recipient);
       throw new RuntimeException("Error to send message to queue");
     }
 
   }
 
-  private void sendMessage(String status, BigDecimal value, UserDTO sender, UserDTO recipient) {
+  private void sendMessage(BigDecimal value, UserDTO senderID, UserDTO recipientID) {
     try {
-      Object[] data = new Object[]{status, value, sender, recipient};
-      String messageJson = objectMapper.writeValueAsString(data);
+      Map<String, Object> transferData = new HashMap<>();
+      transferData.put("value", value);
+      transferData.put("senderID", senderID);
+      transferData.put("recipientID", recipientID);
+      String messageJson = objectMapper.writeValueAsString(transferData);
+      rabbitTemplate.convertAndSend("transferUserBack-row", messageJson);
 
-      rabbitTemplate.convertAndSend("notification-row", messageJson);
     } catch (JsonProcessingException e) {
       throw new TransferFailedException("Failed to serialize transfer data", e);
 

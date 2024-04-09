@@ -2,17 +2,20 @@ package com.matheusmangueira.microserviceusers.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.matheusmangueira.microserviceusers.domain.User;
+import com.matheusmangueira.microserviceusers.exceptions.TransferFailedException;
 import com.matheusmangueira.microserviceusers.exceptions.UserAlreadyExistsException;
 import com.matheusmangueira.microserviceusers.exceptions.UserNotFoundException;
 import com.matheusmangueira.microserviceusers.exceptions.UserWrongInformationException;
 import com.matheusmangueira.microserviceusers.repositories.UserRepository;
 import dtos.TransferRequestDTO;
 import dtos.UserDTO;
+import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -133,6 +136,34 @@ public class UserService {
     if (value != null && value.compareTo(sender.getBalance()) > 0) {
       throw new IllegalArgumentException("Invalid transfer request");
     }
+  }
+
+  public void updateTransfer(
+      String senderID,
+      String recipientID,
+      BigDecimal balanceSender,
+      BigDecimal balanceRecipient
+  ) {
+
+    try {
+      User userSender = userRepository.findById(senderID).orElseThrow(
+          () -> new UserNotFoundException("User sender not found")
+      );
+
+      User userRecipient = userRepository.findById(recipientID).orElseThrow(
+          () -> new UserNotFoundException("User recipient not found")
+      );
+
+      userSender.setBalance(balanceSender);
+      userRecipient.setBalance(balanceRecipient);
+
+      userRepository.save(userSender);
+      userRepository.save(userRecipient);
+
+    } catch (Exception e) {
+      throw new TransferFailedException("Error to update transfer");
+    }
+
   }
 
 

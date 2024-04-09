@@ -37,7 +37,7 @@ public class TransferProducer {
 
   @PostConstruct
   public void send() {
-    Queue row = row("notification-row");
+    Queue row = row("transferUserBack-row");
 
     DirectExchange exchange = exchange();
 
