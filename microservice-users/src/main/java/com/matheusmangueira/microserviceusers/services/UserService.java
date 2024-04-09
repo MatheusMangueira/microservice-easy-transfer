@@ -19,6 +19,8 @@ import org.springframework.stereotype.Service;
 
 
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -140,45 +142,61 @@ public class UserService {
   }
 
   public void updateTransfer(
-      String senderID,
-      String recipientID,
-      BigDecimal balanceSender,
-      BigDecimal balanceRecipient,
-      String senderName,
-      String nameRecipient,
-      BigDecimal value
+      TransferRequestDTO transferRequestDTO
   ) {
 
     try {
-      User userSender = userRepository.findById(senderID).orElseThrow(
+      User userSender = userRepository.findById(transferRequestDTO.senderID.id).orElseThrow(
           () -> new UserNotFoundException("User sender not found")
       );
 
-      User userRecipient = userRepository.findById(recipientID).orElseThrow(
+      User userRecipient = userRepository.findById(transferRequestDTO.recipientID.id).orElseThrow(
           () -> new UserNotFoundException("User recipient not found")
       );
 
-      userSender.setBalance(balanceSender);
-      userRecipient.setBalance(balanceRecipient);
+      userSender.setBalance(transferRequestDTO.senderID.balance);
+      userRecipient.setBalance(transferRequestDTO.recipientID.balance);
 
       userRepository.save(userSender);
       userRepository.save(userRecipient);
 
       TransactionApproved(
-          UserConstants.USER_COMPLETED +
-              " de: " + senderName
-              + " para: " + nameRecipient
-              + " no valor de: " + value);
+          UserConstants.USER_COMPLETED,
+          transferRequestDTO.senderID.email,
+          transferRequestDTO.recipientID.email,
+          transferRequestDTO.value
+      );
 
     } catch (Exception e) {
-      TransactionApproved(UserConstants.USER_CANCELED);
+      TransactionFailed(
+          UserConstants.USER_CANCELED);
       throw new TransferFailedException("Error to update transfer");
     }
 
   }
 
-  public void TransactionApproved(String message) {
+  public void TransactionApproved(
+      String message,
+      String senderMail,
+      String recipientMail,
+      BigDecimal value) {
 
+    try {
+      Map<String, Object> messageData = new HashMap<>();
+      messageData.put("message", message);
+      messageData.put("senderMail", senderMail);
+      messageData.put("recipientMail", recipientMail);
+      messageData.put("value", value);
+
+      String messageJson = objectMapper.writeValueAsString(messageData);
+      rabbitTemplate.convertAndSend("notification-row", messageJson);
+
+    } catch (Exception e) {
+      throw new RuntimeException("Error to send message to queue");
+    }
+  }
+
+  public void TransactionFailed(String message) {
     try {
       String messageJson = objectMapper.writeValueAsString(message);
       rabbitTemplate.convertAndSend("notification-row", messageJson);

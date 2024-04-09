@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6f603bfd-a2b8-4007-b5f8-9deea20d8be6" name="Changes" comment="feat: using lib DTOs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-transfer/src/main/java/com/matheusmangueira/microserviceTransfer/rabbit/comsumer/TansferConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-transfer/src/main/java/com/matheusmangueira/microserviceTransfer/rabbit/comsumer/TansferConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-users/src/main/java/com/matheusmangueira/microserviceusers/constants/UserConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-users/src/main/java/com/matheusmangueira/microserviceusers/constants/UserConstants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../microservice-users/src/main/java/com/matheusmangueira/microserviceusers/rabbit/consumer/UserConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-users/src/main/java/com/matheusmangueira/microserviceusers/rabbit/consumer/UserConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-users/src/main/java/com/matheusmangueira/microserviceusers/rabbit/producer/TransferRequestProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-users/src/main/java/com/matheusmangueira/microserviceusers/rabbit/producer/TransferRequestProducer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../microservice-users/src/main/java/com/matheusmangueira/microserviceusers/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-users/src/main/java/com/matheusmangueira/microserviceusers/services/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +33,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/Estudos/MicroBank/librabbitmq"
+    "last_opened_file_path": "E:/Estudos/MicroBank/microservice-users"
   }
 }]]></component>
   <component name="RecentsManager">

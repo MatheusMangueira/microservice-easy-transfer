@@ -19,17 +19,7 @@ public class UserConsumer {
   public void consumer(String message) throws JsonProcessingException, InterruptedException {
     TransferRequestDTO transferRequestDTO = new ObjectMapper().readValue(message, TransferRequestDTO.class);
 
-    userService.updateTransfer(
-        transferRequestDTO.senderID.id,
-        transferRequestDTO.recipientID.id,
-        transferRequestDTO.senderID.balance,
-        transferRequestDTO.recipientID.balance,
-        transferRequestDTO.senderID.name,
-        transferRequestDTO.recipientID.name,
-        transferRequestDTO.value
-    );
-
-
+    userService.updateTransfer(transferRequestDTO);
 
     System.out.println("Transfer: " + message);
     System.out.println("-------------------------");
