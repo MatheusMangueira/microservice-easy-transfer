@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.matheusmangueira.microserviceusers.domain.User;
 import com.matheusmangueira.microserviceusers.exceptions.UserAlreadyExistsException;
 import com.matheusmangueira.microserviceusers.exceptions.UserNotFoundException;
+import com.matheusmangueira.microserviceusers.exceptions.UserWrongInformationException;
 import com.matheusmangueira.microserviceusers.repositories.UserRepository;
 import dtos.TransferRequestDTO;
 import dtos.UserDTO;
@@ -98,15 +99,38 @@ public class UserService {
   }
 
   private void validateTransferRequest(TransferRequestDTO transferRequestDTO) {
-    User recipient = userRepository.findById(transferRequestDTO.recipientID)
-        .orElseThrow(() -> new UserNotFoundException("Recipient not found"));
+    User sender = userRepository.findById(transferRequestDTO.senderID.id())
+        .filter(user ->
+            user.getEmail().equals(transferRequestDTO.senderID.email())
+                && user.getName().equals(transferRequestDTO.senderID.name())
+                && user.getBalance().equals(transferRequestDTO.senderID.balance()
+            )
+        )
+        .orElseThrow(() -> new UserWrongInformationException("Invalid sender information. " +
+            "Please check the information and try again. Example: " +
+            "balance: 100.00, " +
+            "name: John Doe, " +
+            "email: testando@teste.com " +
+            "id: 1"));
 
-    User sender = userRepository.findById(transferRequestDTO.senderID)
-        .orElseThrow(() -> new UserNotFoundException("Sender not found"));
+
+    User recipient = userRepository.findById(transferRequestDTO.recipientID.id())
+        .filter(user ->
+            user.getEmail().equals(transferRequestDTO.recipientID.email())
+                && user.getName().equals(transferRequestDTO.recipientID.name())
+                && user.getBalance().equals(transferRequestDTO.recipientID.balance()
+            )
+        )
+        .orElseThrow(() -> new UserWrongInformationException("Invalid recipient information. " +
+            "Please check the information and try again. Example: " +
+            "balance: 100.00, " +
+            "name: John Doe, " +
+            "email: testando@teste.com " +
+            "id: 1"));
 
     BigDecimal value = transferRequestDTO.value;
 
-    if (recipient == null || sender == null || value == null) {
+    if (value == null) {
       throw new IllegalArgumentException("Invalid transfer request");
     }
   }
