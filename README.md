@@ -10,8 +10,8 @@
 </br>
 
 Recursos disponíveis para acesso via API:
-* [**Resumo Geral do Projeto**](#regras)
-* [**Regras de Negócio**](#Regras)
+* [**Resumo Geral do Projeto**](#resumo)
+* [**Regras de Negócio**](#regras)
 * [**Tecnologias Utilizadas**](#Tecnologias)
 * [**Métodos**](#Métodos)
 * [**Respostas**](#Respostas)
@@ -20,6 +20,7 @@ Recursos disponíveis para acesso via API:
 * [**Transfêrencia**](#Transfêrencia)
 
 ## Resumo Geral do Projeto:
+<p id="resumo"> </p>
 
 <p> Este projeto consiste em um sistema de transferência de valores, desenvolvido com a arquitetura de microserviços, composto por três microserviços interconectados. </p>
 
