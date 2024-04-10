@@ -34,7 +34,7 @@ Recursos disponíveis para acesso via API:
 
 
 ## Regras de Negócio:
-</p id="regras">
+<p id="regras"> </p>
 
 1) O usuário poderá realizar uma transferência de valor para um destinatário.
 2) A transferência ocorrerá subtraindo o valor da conta do usuário que solicitou a transferência e adicionando-o à conta do usuário destinatário. 
