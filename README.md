@@ -64,7 +64,7 @@ Recursos disponíveis para acesso via API:
 
 ## Como rodar ?
 
-1) Para testar a API, Faça um clone do repósitorio https://github.com/MatheusMangueira/microservice-transfer.git
+1) Para testar a API, Faça um clone do repósitorio https://github.com/MatheusMangueira/microservice-easy-transfer.git
 2) Configure as variaveis de ambiente de acordo com o arquivo ```.env.example``` de cada microserviço.
 3) Configure o docker conforme o especificado no [**Docker**](#Docker).
 4) Acesse http://localhost:8080 para o ```microserviço de usres```
