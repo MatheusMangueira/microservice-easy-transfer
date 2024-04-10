@@ -58,6 +58,35 @@ Recursos disponíveis para acesso via API:
 | ✅ Java 21                            | -                                     | -                          |
 
 
+## Como rodar ?
+
+1) Para testar a API, Faça um clone do repósitorio https://github.com/MatheusMangueira/microservice-transfer.git
+2) Configure as variaveis de ambiente de acordo com o arquivo .env.example de cada microserviço.
+3) Configure o docker conforme o especificado no [**Docker**](#Docker).
+4) Acesse http://localhost:8080 para o ```microserviço de usres```
+5) Acesse http://localhost:9090 para o ```microserviço de transfer```
+6) Acesse http://localhost:3000 para o ```microserviço de notification```
+
+## Docker
+1) Na raiz do projeto vá até o diretório ```devops/docker/docker-compose.yml``` e atente-se as variáveis de ambiente (ENV).
+2) Inicialize os serviços com o comando ```docker-compose up``` assim você irá executar a aplicação.
+ * OBS: Irá inicializar o serviços do  ```rabbitmq | ports: - "5432:5432"```  ```postgres-user | ports: - "5432:5432"``` ``` postgres-transfer | ports: - "5433:5432" ```
+   
+```bash
+< PROJECT ROOT >
+   |-- devops/                       # devops
+   |   |-- docker/
+   |   |-- docker-compose.yml        # Docker
+   |   |-- .env.example              # arquivo ENV de exemplo
+   |    
+   |-- librabbitmq                   # lib BTOs
+   |-- microservice-notification     # microserviço de notificação 
+   |-- microservice-transfer         # microserviço de transferencia
+   |-- microservice-users            # microserviço de usuario
+   |
+   |-- *************************************************      
+```   
+
 ## Métodos
 
 Requisições para a API devem seguir os padrões:
