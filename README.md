@@ -10,7 +10,7 @@
 </br>
 
 Recursos disponíveis para acesso via API:
-* [**Resumo Geral do Projeto**](#ResumoGeraldoProjeto)
+* [**Resumo Geral do Projeto**](#regras)
 * [**Regras de Negócio**](#Regras)
 * [**Tecnologias Utilizadas**](#Tecnologias)
 * [**Métodos**](#Métodos)
@@ -34,6 +34,7 @@ Recursos disponíveis para acesso via API:
 
 
 ## Regras de Negócio:
+</p id="regras">
 
 1) O usuário poderá realizar uma transferência de valor para um destinatário.
 2) A transferência ocorrerá subtraindo o valor da conta do usuário que solicitou a transferência e adicionando-o à conta do usuário destinatário. 
