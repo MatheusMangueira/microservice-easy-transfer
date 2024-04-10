@@ -10,7 +10,7 @@
 </br>
 
 Recursos disponíveis para acesso via API:
-* [**Resumo Geral do Projeto**](#Resumo)
+* [**Resumo Geral do Projeto**](#ResumoGeraldoProjeto)
 * [**Regras de Negócio**](#Regras)
 * [**Tecnologias Utilizadas**](#Tecnologias)
 * [**Métodos**](#Métodos)
