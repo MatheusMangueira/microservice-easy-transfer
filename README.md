@@ -22,16 +22,17 @@ Recursos disponíveis para acesso via API:
 ## Resumo Geral do Projeto:
 <p id="resumo"> </p>
 
-<p> Este projeto consiste em um sistema de transferência de valores, desenvolvido com a arquitetura de microserviços, composto por três microserviços interconectados. </p>
+<p> Este projeto consiste em um sistema de transferência de valores, desenvolvido com a arquitetura de microserviços, composto por três microserviços interconectados. Lembrando que a comunicação entre nossos microsserviços é efetuada via <a href="https://rabbitmq.com" target="_blank">RabbitMQ</a>
+</p>
 
 1) 🟢 Microserviço de Usuário:
-   <p> Este microserviço foi criado com Spring Boot, Java na sua versão 21 e é responsável por gerenciar as informações dos usuários, incluindo nome, email e saldo disponível em suas contas. Ao ser instanciado, o microserviço realiza a criação da fila de transferência utilizando RabbitMQ. Essa fila será utilizada para enviar os dados necessários para o serviço de transferência. </p>
+   <p> Este microserviço foi criado com Spring Boot, Java na sua versão 21 e é responsável por gerenciar as informações dos usuários, incluindo nome, email e saldo disponível em sua conta. Ao ser instanciado, o microserviço realiza a criação da fila de transferência utilizando <a href="https://rabbitmq.com" target="_blank">RabbitMQ</a>. Essa fila será utilizada para enviar os dados necessários para o serviço de transferência. </p>
 
 2) 🟢 Microserviço de Transferência:
-   <p> O microserviço de transferência foi criado com Spring Boot, Java na sua versão 21 e recebe e processa as solicitações de transferência dos usuários, calcula o valor da transação e assegura a integridade das operações. Após a conclusão, retorna informações relevantes sobre a transação para o usuário através da fila transferUserBack-row, que é consumida pelo microserviço de usuários para atualização do banco de dados. Essa abordagem assíncrona garante eficiência e escalabilidade, mantendo a operação do sistema suave e confiável.  </p>
+   <p> O microserviço de transferência foi criado com Spring Boot, Java na sua versão 21. Esse serviço recebe e processa as solicitações de transferência dos usuários, calcula o valor da transação e assegura a integridade das operações. Após a conclusão, retorna informações relevantes sobre a transação para o usuário através da fila ```transferUserBack-row```, que é consumida pelo microserviço de usuários para atualização do banco de dados. Essa abordagem assíncrona garante eficiência e escalabilidade, mantendo a operação do sistema suave e confiável.  </p>
 
 3) 🟢 Microserviço de Notificação:
-   <p> Este microserviço foi realizado com NodeJs e é responsável por enviar notificações por e-mail aos destinatários de uma transferência de valores. Ele é acionado pelo microserviço de transferência após a conclusão de uma transferência bem-sucedida e envia uma mensagem de notificação para o destinatário, informando sobre a transação. </p>
+   <p> Este microserviço foi realizado com NodeJs e é responsável por enviar notificações por e-mail aos destinatários de uma transferência de valores. Ele é acionado após a conclusão de uma transferência bem-sucedida e envia uma mensagem de notificação para o destinatário, informando sobre a transação. </p>
 
 
 ## Regras de Negócio:
@@ -41,6 +42,9 @@ Recursos disponíveis para acesso via API:
 2) A transferência ocorrerá subtraindo o valor da conta do usuário que solicitou a transferência e adicionando-o à conta do usuário destinatário. 
 3) A notificação enviará um e-mail para o e-mail do usuário com o e-mail do remetente e do destinatário, assim como o valor da transferência.
 4) O sistema está desenhado da seguinte forma:
+  </br>
+  
+   ![c34c17b8-e3d0-4aed-b028-8bf0e9eae338](https://github.com/MatheusMangueira/microservice-transfer/assets/98111351/d9b48277-1cd9-413b-9a90-46eeb535fe7b)
 
 
 ## Tecnologias Utilizadas:
@@ -61,11 +65,12 @@ Recursos disponíveis para acesso via API:
 ## Como rodar ?
 
 1) Para testar a API, Faça um clone do repósitorio https://github.com/MatheusMangueira/microservice-transfer.git
-2) Configure as variaveis de ambiente de acordo com o arquivo .env.example de cada microserviço.
+2) Configure as variaveis de ambiente de acordo com o arquivo ```.env.example``` de cada microserviço.
 3) Configure o docker conforme o especificado no [**Docker**](#Docker).
 4) Acesse http://localhost:8080 para o ```microserviço de usres```
 5) Acesse http://localhost:9090 para o ```microserviço de transfer```
 6) Acesse http://localhost:3000 para o ```microserviço de notification```
+7) Aceese http://localhost:15672 para o ```Login do RabbitMq``` conforme suas credenciais
 
 ## Docker
 1) Na raiz do projeto vá até o diretório ```devops/docker/docker-compose.yml``` e atente-se as variáveis de ambiente (ENV).
